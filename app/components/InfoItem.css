@@ -1,0 +1,44 @@
+.info-section {
+  margin-bottom: 24px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.section-header h3 {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 0;
+}
+
+.section-content {
+  background-color: white;
+}
+
+.btn {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+}
+
+.btn-secondary {
+  background-color: white;
+  color: #4a90e2;
+  border: 1px solid #4a90e2;
+}
+
+.btn-secondary:hover {
+  background-color: #4a90e2;
+  color: white;
+}

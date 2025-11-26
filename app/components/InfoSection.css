@@ -1,0 +1,43 @@
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-right: 12px;
+  min-width: 24px;
+}
+
+.info-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-weight: 600;
+  color: #333;
+  display: block;
+}
+
+.value {
+  color: #999;
+  display: block;
+  font-size: 0.95rem;
+}
+
+.value.secondary {
+  color: #aaa;
+  font-style: italic;
+}
