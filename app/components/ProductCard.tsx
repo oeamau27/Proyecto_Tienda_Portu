@@ -1,29 +1,34 @@
-// components/ProductCard.tsx
-export default function ProductCard({ producto }: any) {
-  return (
-    <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-black/10">
-      
-      {/* IMAGEN */}
-      <div className="relative h-40 w-full">
-        <img
-          src={producto.img}
-          alt={producto.nombre}
-          className="w-full h-full object-cover"
-        />
+"use client";
 
-        {/* ETIQUETA */}
-        <span className="absolute top-2 left-2 bg-blue-700 text-white px-2 py-1 rounded-lg text-xs font-semibold">
-          {producto.etiqueta}
-        </span>
+import { useUser } from "../context/UserContext";
+import { useCart } from "../context/CartContext";
+
+export default function ProductCard({ producto, onLoginRequest }: any) {
+  const { user } = useUser();
+  const { addToCart } = useCart();
+
+  function handleAdd() {
+    if (!user) {
+      onLoginRequest();  // 🔥 abrir login
+      return;
+    }
+
+    addToCart({ ...producto, qty: 1 }); // 🔥 agregar al carrito
+  }
+
+  return (
+    <div className="bg-white rounded-xl shadow-sm border border-black/10 overflow-hidden">
+      <div className="relative h-40">
+        <img src={producto.img} className="w-full h-full object-cover" />
       </div>
 
-      {/* INFO */}
       <div className="p-3">
-        <h3 className="font-semibold text-black text-sm">{producto.nombre}</h3>
-        <p className="font-bold text-black text-sm">${producto.precio}</p>
+        <h3 className="font-bold text-black">{producto.nombre}</h3>
 
-        {/* BOTÓN */}
-        <button className="w-full bg-black text-white py-2 rounded-lg mt-2 text-sm font-medium">
+        <button
+          onClick={handleAdd}
+          className="w-full bg-black text-white py-2 rounded-lg mt-2 text-sm font-semibold"
+        >
           Agregar
         </button>
       </div>

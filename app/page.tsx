@@ -9,7 +9,9 @@ interface Producto {
   id: number;
   nombre: string;
   img: string;
+  price: number;
 }
+
 
 export default function HomePage() {
 
@@ -20,35 +22,37 @@ export default function HomePage() {
   const [openFilters, setOpenFilters] = useState(false);
 
   // LISTA DE PRODUCTOS
-  const productos: Producto[] = [
-    { id: 1, nombre: "Ace Surf", img: "/img/ace-surf.jpg" },
-    { id: 2, nombre: "Ace Omo", img: "/img/ace-omo.jpg" },
-    { id: 3, nombre: "Aceite 2L", img: "/img/aceite-2l.jpg" },
-    { id: 4, nombre: "Aceite 450ml", img: "/img/aceite-450ml.jpg" },
-    { id: 5, nombre: "Agua Sport 1.5L", img: "/img/agua-sport-1.5l.jpg" },
-    { id: 6, nombre: "Agua Villasante 7L", img: "/img/agua-villasante-7l.jpg" },
-    { id: 7, nombre: "Agua Vital 3L", img: "/img/agua-vital-3l.jpg" },
-    { id: 8, nombre: "Ajinomen", img: "/img/ajinomen.jpg" },
-    { id: 9, nombre: "Ajinomen Vaso", img: "/img/ajinomen-vaso.jpg" },
-    { id: 10, nombre: "Alcohol", img: "/img/alcohol.jpg" },
+const productos: Producto[] = [
+  { id: 1, nombre: "Ace Surf", img: "/img/ace-surf.jpg", price: 2.50 },
+  { id: 2, nombre: "Ace Omo", img: "/img/ace-omo.jpg", price: 2.50 },
+  { id: 3, nombre: "Aceite 2L", img: "/img/aceite-2l.jpg", price: 6.50 },
+  { id: 4, nombre: "Aceite 450ml", img: "/img/aceite-450ml.jpg", price: 2.00 },
+  { id: 5, nombre: "Agua Sport 1.5L", img: "/img/agua-sport-1.5l.jpg", price: 1.50 },
+  { id: 6, nombre: "Agua Villasante 7L", img: "/img/agua-villasante-7l.jpg", price: 3.20 },
+  { id: 7, nombre: "Agua Vital 3L", img: "/img/agua-vital-3l.jpg", price: 2.00 },
+  { id: 8, nombre: "Ajinomen", img: "/img/ajinomen.jpg", price: 1.10 },
+  { id: 9, nombre: "Ajinomen Vaso", img: "/img/ajinomen-vaso.jpg", price: 1.50 },
+  { id: 10, nombre: "Alcohol", img: "/img/alcohol.jpg", price: 2.30 },
 
-    { id: 11, nombre: "Baton", img: "/img/baton.jpg" },
-    { id: 12, nombre: "Bolichoc (estrella)", img: "/img/bolichoc-estrella.jpg" },
-    { id: 13, nombre: "Bon o Bon", img: "/img/bon-o-bon.jpg" },
-    { id: 14, nombre: "Budín (La Suprema)", img: "/img/budin-la-suprema.jpg" },
-    { id: 15, nombre: "Burguesa cerveza lata grande", img: "/img/cerveza-lata-grande.jpg" },
+  { id: 11, nombre: "Baton", img: "/img/baton.jpg", price: 1.00 },
+  { id: 12, nombre: "Bolichoc (estrella)", img: "/img/bolichoc-estrella.jpg", price: 0.80 },
+  { id: 13, nombre: "Bon o Bon", img: "/img/bon-o-bon.jpg", price: 1.20 },
+  { id: 14, nombre: "Budín (La Suprema)", img: "/img/budin-la-suprema.jpg", price: 2.50 },
+  { id: 15, nombre: "Burguesa cerveza lata grande", img: "/img/cerveza-lata-grande.jpg", price: 2.80 },
 
-    { id: 16, nombre: "Canela molida", img: "/img/canela-molida.jpg" },
-    { id: 17, nombre: "Casa Real Azul", img: "/img/casa-real-azul.jpg" },
-    { id: 18, nombre: "Casa Real Negro", img: "/img/casa-real-negro.jpg" },
-    { id: 19, nombre: "Casa Real Rojo", img: "/img/casa-real-rojo.jpg" },
-    { id: 20, nombre: "Cascada Durazno 2L", img: "/img/cascada-durazno-2l.jpg" },
-    { id: 21, nombre: "Cascada Fresa 2L", img: "/img/cascada-fresa-2l.jpg" },
-    { id: 22, nombre: "Cascada Guaraná 2L", img: "/img/cascada-guarana-2l.jpg" },
-    { id: 23, nombre: "Cascada Mandarina 2L", img: "/img/cascada-mandarina-2l.jpg" },
-    { id: 24, nombre: "Cascada Papaya 3L", img: "/img/cascada-papaya-3l.jpg" },
-    { id: 25, nombre: "Cascada Pequeño", img: "/img/cascada-pequeno.jpg" }
-  ];
+  { id: 16, nombre: "Canela molida", img: "/img/canela-molida.jpg", price: 1.30 },
+  { id: 17, nombre: "Casa Real Azul", img: "/img/casa-real-azul.jpg", price: 9.00 },
+  { id: 18, nombre: "Casa Real Negro", img: "/img/casa-real-negro.jpg", price: 9.00 },
+  { id: 19, nombre: "Casa Real Rojo", img: "/img/casa-real-rojo.jpg", price: 9.00 },
+
+  { id: 20, nombre: "Cascada Durazno 2L", img: "/img/cascada-durazno-2l.jpg", price: 3.50 },
+  { id: 21, nombre: "Cascada Fresa 2L", img: "/img/cascada-fresa-2l.jpg", price: 3.50 },
+  { id: 22, nombre: "Cascada Guaraná 2L", img: "/img/cascada-guarana-2l.jpg", price: 3.50 },
+  { id: 23, nombre: "Cascada Mandarina 2L", img: "/img/cascada-mandarina-2l.jpg", price: 3.50 },
+  { id: 24, nombre: "Cascada Papaya 3L", img: "/img/cascada-papaya-3l.jpg", price: 4.00 },
+  { id: 25, nombre: "Cascada Pequeño", img: "/img/cascada-pequeno.jpg", price: 2.00 },
+];
+
 
   return (
     <div className="pb-24 bg-white">
@@ -91,7 +95,12 @@ export default function HomePage() {
         pt-4
       ">
         {productos.map((p) => (
-          <ProductCard key={p.id} producto={p} />
+          <ProductCard 
+  key={p.id}
+  producto={p}
+  onLoginRequest={() => setOpenLogin(true)}
+/>
+
         ))}
       </div>
 
