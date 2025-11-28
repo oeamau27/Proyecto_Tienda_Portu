@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -98,7 +97,6 @@ const ProductTable: React.FC<{ products: Product[] }> = ({ products }) => {
   );
 };
 
-// Componente InventoryDashboard
 const InventoryDashboard: React.FC = () => {
   const products: Product[] = [
     {
