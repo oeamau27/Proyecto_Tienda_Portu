@@ -129,7 +129,6 @@ const PromotionsDashboard: React.FC = () => {
 
     setPromotions(prev => [...prev, newPromotion]);
     closeModal();
-    // optional: toast / alert
   };
 
   const handleSubmitUpdate = (e: React.FormEvent) => {
@@ -174,6 +173,29 @@ const PromotionsDashboard: React.FC = () => {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, []);
+
+  // <-- INLINE STYLES FOR RELIABILITY -->
+  const overlayStyle: React.CSSProperties = {
+    position: 'fixed',
+    inset: 0,
+    background: 'rgba(0,0,0,0.45)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 9999,
+    padding: 16,
+    overflowY: 'auto'
+  };
+
+  const modalStyle: React.CSSProperties = {
+    background: '#fff',
+    width: '100%',
+    maxWidth: 560,
+    borderRadius: 14,
+    padding: 22,
+    boxShadow: '0 25px 50px rgba(0,0,0,0.3)',
+    boxSizing: 'border-box',
+  };
 
   return (
     <div className="dashboard">
@@ -251,73 +273,100 @@ const PromotionsDashboard: React.FC = () => {
         </table>
       </div>
 
-      {/* --- MODAL --- */}
+      {/* --- MODAL (con estilos inline y manejo de propagación) --- */}
       {isModalOpen && (
-        <div className="promoModalOverlay" role="dialog" aria-modal="true">
-          <div className="promoModal">
+        <div
+          // overlay: fuerza posición fija aquí (inline style para evitar conflictos CSS)
+          style={overlayStyle}
+          role="dialog"
+          aria-modal="true"
+          onClick={closeModal} // clic en overlay cierra
+        >
+          <div
+            className="promoModal"
+            style={modalStyle}
+            onClick={(e) => e.stopPropagation()} // evita que clics dentro cierren
+          >
 
-            <div className="promoModalHeader">
-              <h3>{modalMode === 'edit' ? 'Editar Promoción' : 'Nueva Promoción'}</h3>
-              <button className="promoCloseBtn" type="button" onClick={closeModal}>×</button>
+            <div className="promoModalHeader" style={{ marginBottom: 12 }}>
+              <h3 style={{ margin: 0, fontSize: 18 }}>{modalMode === 'edit' ? 'Editar Promoción' : 'Nueva Promoción'}</h3>
+              <button
+                className="promoCloseBtn"
+                type="button"
+                onClick={closeModal}
+                aria-label="Cerrar"
+                style={{ fontSize: 20, background: 'none', border: 'none', cursor: 'pointer' }}
+              >
+                ×
+              </button>
             </div>
 
             <form onSubmit={modalMode === 'edit' ? handleSubmitUpdate : handleSubmitCreate}>
-              <div className="promoGrid2">
+              <div className="promoGrid2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
                 <div>
-                  <label>Nombre</label>
+                  <label style={{ fontWeight: 600 }}>Nombre</label>
                   <input
                     name="name"
                     value={promotionForm.name}
                     onChange={handleInputChange}
                     required
+                    style={{ width: '100%', padding: 8, marginTop: 6, borderRadius: 8, border: '1px solid #d1d5db' }}
                   />
                 </div>
 
                 <div>
-                  <label>Código</label>
+                  <label style={{ fontWeight: 600 }}>Código</label>
                   <input
                     name="code"
                     value={promotionForm.code}
                     onChange={handleInputChange}
                     required
+                    style={{ width: '100%', padding: 8, marginTop: 6, borderRadius: 8, border: '1px solid #d1d5db' }}
                   />
                 </div>
               </div>
 
-              <div className="promoSection">
-                <label>Descripción</label>
+              <div className="promoSection" style={{ marginTop: 12 }}>
+                <label style={{ fontWeight: 600 }}>Descripción</label>
                 <input
                   name="description"
                   value={promotionForm.description}
                   onChange={handleInputChange}
                   placeholder="Descripción de la promoción"
+                  style={{ width: '100%', padding: 8, marginTop: 6, borderRadius: 8, border: '1px solid #d1d5db' }}
                 />
               </div>
 
-              <div className="promoGrid2">
+              <div className="promoGrid2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
                 <div>
-                  <label>Tipo de Descuento</label>
-                  <select name="discountType" value={promotionForm.discountType} onChange={handleInputChange}>
+                  <label style={{ fontWeight: 600 }}>Tipo de Descuento</label>
+                  <select
+                    name="discountType"
+                    value={promotionForm.discountType}
+                    onChange={handleInputChange}
+                    style={{ width: '100%', padding: 8, marginTop: 6, borderRadius: 8, border: '1px solid #d1d5db' }}
+                  >
                     <option value="percentage">Porcentaje</option>
                     <option value="fixed">Valor</option>
                   </select>
                 </div>
 
                 <div>
-                  <label>Compra Mínima ($)</label>
+                  <label style={{ fontWeight: 600 }}>Compra Mínima ($)</label>
                   <input
                     name="minPurchase"
                     type="number"
                     step="0.01"
                     value={promotionForm.minPurchase}
                     onChange={handleInputChange}
+                    style={{ width: '100%', padding: 8, marginTop: 6, borderRadius: 8, border: '1px solid #d1d5db' }}
                   />
                 </div>
               </div>
 
-              <div className="promoSection">
-                <label>Descuento</label>
-                <div className="promoDiscountBox">
+              <div className="promoSection" style={{ marginTop: 12 }}>
+                <label style={{ fontWeight: 600 }}>Descuento</label>
+                <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginTop: 6 }}>
                   <input
                     name="discountValue"
                     type="number"
@@ -325,27 +374,40 @@ const PromotionsDashboard: React.FC = () => {
                     value={promotionForm.discountValue}
                     onChange={handleInputChange}
                     required
+                    style={{ flex: 1, padding: 8, borderRadius: 8, border: '1px solid #d1d5db' }}
                   />
-                  <span className="promoSuffix">
-                    {promotionForm.discountType === 'percentage' ? '%' : '$'}
-                  </span>
+                  <span style={{ fontWeight: 700 }}>{promotionForm.discountType === 'percentage' ? '%' : '$'}</span>
                 </div>
               </div>
 
-              <div className="promoGrid2">
+              <div className="promoGrid2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginTop: 12 }}>
                 <div>
-                  <label>Fecha de Inicio</label>
-                  <input name="startDate" type="date" value={promotionForm.startDate} onChange={handleInputChange} required />
+                  <label style={{ fontWeight: 600 }}>Fecha de Inicio</label>
+                  <input
+                    name="startDate"
+                    type="date"
+                    value={promotionForm.startDate}
+                    onChange={handleInputChange}
+                    required
+                    style={{ width: '100%', padding: 8, marginTop: 6, borderRadius: 8, border: '1px solid #d1d5db' }}
+                  />
                 </div>
                 <div>
-                  <label>Fecha de Fin</label>
-                  <input name="endDate" type="date" value={promotionForm.endDate} onChange={handleInputChange} required />
+                  <label style={{ fontWeight: 600 }}>Fecha de Fin</label>
+                  <input
+                    name="endDate"
+                    type="date"
+                    value={promotionForm.endDate}
+                    onChange={handleInputChange}
+                    required
+                    style={{ width: '100%', padding: 8, marginTop: 6, borderRadius: 8, border: '1px solid #d1d5db' }}
+                  />
                 </div>
               </div>
 
-              <div className="promoModalFooter">
-                <button type="button" className="promoBtnCancel" onClick={closeModal}>Cancelar</button>
-                <button type="submit" className="promoBtnConfirm">
+              <div className="promoModalFooter" style={{ marginTop: 18, display: 'flex', justifyContent: 'flex-end', gap: 10 }}>
+                <button type="button" onClick={closeModal} style={{ background: '#e5e7eb', padding: '8px 12px', borderRadius: 8 }}>Cancelar</button>
+                <button type="submit" style={{ background: '#000', color: '#fff', padding: '8px 12px', borderRadius: 8 }}>
                   {modalMode === 'edit' ? 'Actualizar' : 'Crear'}
                 </button>
               </div>
