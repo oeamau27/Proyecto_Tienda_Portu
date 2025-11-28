@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import AdminDropdown from "../components/AdminDropdown";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -16,7 +17,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100 overflow-x-hidden">
 
       {/* HEADER */}
       <header className="bg-white shadow-md px-4 py-3 flex justify-between items-center md:px-6">
@@ -24,16 +25,15 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           Tienda de Barrio "Portu" - Admin
         </h1>
 
-        <button className="px-3 py-1.5 bg-gray-200 rounded-lg hover:bg-gray-300 text-sm md:text-base">
-          Administrador
-        </button>
+        <AdminDropdown />
       </header>
 
-      {/* TABS RESPONSIVE */}
+      {/* TABS */}
       <div className="flex justify-center mt-4 px-2">
-        <div className="bg-gray-200 px-2 py-2 rounded-full flex gap-2 md:gap-6 overflow-auto">
+        <div className="bg-gray-200 px-2 py-2 rounded-full flex gap-3 md:gap-6 overflow-auto scrollbar-hide">
           {tabs.map((tab) => {
             const active = pathname === tab.path;
+
             return (
               <Link
                 key={tab.path}
@@ -52,9 +52,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       </div>
 
       {/* CONTENIDO */}
-      <main className="max-w-5xl mx-auto py-6 px-3 md:px-4">
+      <main className="w-full px-3 md:px-6 py-6 overflow-x-hidden">
         {children}
       </main>
+
     </div>
   );
 }

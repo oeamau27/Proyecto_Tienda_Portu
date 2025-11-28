@@ -279,12 +279,29 @@ function Modal({
   children: React.ReactNode;
 }) {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50">
-      <div className="bg-white w-[90%] max-w-[500px] rounded-xl shadow-xl p-6 relative">
-
+    <div
+      className="
+        fixed inset-0 
+        bg-black/30 
+        backdrop-blur-sm 
+        flex justify-center items-center 
+        z-50
+      "
+    >
+      <div className="
+        bg-white 
+        w-[92%] max-w-[500px] 
+        rounded-2xl 
+        shadow-xl 
+        p-6 
+        relative
+        animate-fadeIn
+      ">
+        
+        {/* Botón cerrar */}
         <button
           onClick={close}
-          className="absolute right-4 top-4 text-xl"
+          className="absolute right-4 top-4 text-xl hover:text-gray-600"
         >
           ×
         </button>
