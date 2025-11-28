@@ -63,12 +63,12 @@ export default function CarritoPage() {
             </div>
           </div>
 
-          <button
-           className="ml-3 p-2 bg-red-600 text-white rounded-full hover:bg-red-700 transition"
-           onClick={() => removeItem(i)}
-          >
-          🗑️
-          </button>
+<button
+  className="ml-3 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition flex items-center justify-center"
+  onClick={() => removeItem(i)}
+>
+  🗑️ Eliminar
+</button>
 
         </div>
       ))}
