@@ -269,7 +269,7 @@ const PromotionsDashboard: React.FC = () => {
               <button className="closeButton" onClick={closeModal}>×</button>
             </div>
             
-            {/* ✅ CORREGIDO: Usar handleUpdate para editar y handleSubmit para crear */}
+            
             <form onSubmit={editingPromotion ? handleUpdate : handleSubmit}>
               <div className="modalBody">
                 {/* Tabla de Nombre y Código */}
