@@ -1,0 +1,247 @@
+/* ======= CONTENEDOR GENERAL ======= */
+.dashboard {
+  width: 100%;
+  padding: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.dashboardHeader {
+  margin-bottom: 16px;
+}
+
+.dashboardTitle {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.dashboardSubtitle {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* ======= BOTONES ======= */
+.button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  border: none;
+}
+
+.buttonPrimary {
+  background: black;
+  color: white;
+}
+
+.buttonPrimary:hover {
+  background: #333;
+}
+
+.buttonSecondary {
+  background: #e5e7eb;
+}
+
+.buttonSecondary:hover {
+  background: #d1d5db;
+}
+
+.buttonDanger {
+  background: #ef4444;
+  color: white;
+}
+
+.buttonDanger:hover {
+  background: #dc2626;
+}
+
+/* ======= TABLA ======= */
+.tableSection {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+.productTable {
+  width: 100%;
+  min-width: 850px;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.productTable th {
+  background: #f3f4f6;
+  padding: 12px;
+  text-align: left;
+  font-weight: 700;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.productTable td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Estado */
+.status-button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.status-button.active {
+  background: #10b981;
+  color: white;
+}
+
+.status-button.inactive {
+  background: #ef4444;
+  color: white;
+}
+
+/* ======= MODAL OVERLAY ======= */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  z-index: 9999;
+}
+
+/* ======= MODAL BOX ======= */
+.modal {
+  background: white;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 25px 45px rgba(0,0,0,0.25);
+  animation: modalIn 0.25s ease-out;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ======= HEADER MODAL ======= */
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.modalHeader h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* ======= FORM STRUCTURE ======= */
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.formSection label {
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.formSection textarea,
+.modal input,
+.modal select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  margin-top: 4px;
+}
+
+/* ======= FORM GRID (2 columnas) ======= */
+.formTable {
+  width: 100%;
+}
+
+.formTableRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.formTableCell label {
+  font-weight: 600;
+}
+
+/* ======= RADIO BUTTON ======= */
+.radioGroup {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.radioCustom {
+  width: 14px;
+  height: 14px;
+  border-radius: 20px;
+  border: 2px solid #555;
+}
+
+/* ======= DESCUENTO BOX ======= */
+.discountInput {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.discountInput input {
+  flex: 1;
+}
+
+.discountSuffix {
+  font-weight: bold;
+}
+
+/* ======= FOOTER ======= */
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+/* ======= RESPONSIVE ======= */
+@media (max-width: 600px) {
+  .formTableRow {
+    grid-template-columns: 1fr;
+  }
+
+  .modal {
+    width: 95%;
+    padding: 20px;
+  }
+}
