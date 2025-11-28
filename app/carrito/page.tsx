@@ -31,18 +31,57 @@ export default function CarritoPage() {
   }
 
   const total = cart.reduce((sum: number, item: any) => {
-    return sum + (item.price * (item.qty || 1));
+    return sum + item.price * (item.qty || 1);
   }, 0);
+
+  // 🔹 NUEVO: crear y guardar la orden cuando se procede al pago
+  function handleProcederPago() {
+    if (cart.length === 0) {
+      alert("Tu carrito está vacío");
+      return;
+    }
+
+    const fecha = new Date().toLocaleDateString("es-ES", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    });
+
+    const orden = {
+      id: "order-" + Date.now(), // id único
+      fecha,
+      estado: "pendiente" as const,
+      items: cart.map((item: any) => ({
+        nombre: item.nombre,
+        cantidad: item.qty || 1,
+      })),
+      total: Number(total.toFixed(2)),
+    };
+
+    console.log("Guardando orden en localStorage:", orden);
+
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("ultimaOrden", JSON.stringify(orden));
+      // opcional: vaciar carrito después de pagar
+      setCart([]);
+      // ir a /ordenes
+      window.location.href = "/ordenes";
+    }
+  }
 
   return (
     <div className="p-4 pb-32 text-black">
-
       <h1 className="text-2xl font-bold mb-6">Mi Carrito</h1>
 
       {cart.map((p: any, i: number) => (
-        <div key={i} className="bg-white p-4 rounded-xl border shadow-sm mb-4 flex items-center">
-          
-          <img src={p.img} className="w-20 h-20 rounded-lg object-cover border" />
+        <div
+          key={i}
+          className="bg-white p-4 rounded-xl border shadow-sm mb-4 flex items-center"
+        >
+          <img
+            src={p.img}
+            className="w-20 h-20 rounded-lg object-cover border"
+          />
 
           <div className="ml-4 flex-1">
             <h2 className="font-semibold text-lg">{p.nombre}</h2>
@@ -52,18 +91,25 @@ export default function CarritoPage() {
               <button
                 className="w-8 h-8 border rounded flex items-center justify-center"
                 onClick={() => changeQty(i, -1)}
-              >-</button>
+              >
+                -
+              </button>
 
               <span>{p.qty}</span>
 
               <button
                 className="w-8 h-8 border rounded flex items-center justify-center"
                 onClick={() => changeQty(i, +1)}
-              >+</button>
+              >
+                +
+              </button>
             </div>
           </div>
 
-          <button className="text-red-600 font-bold ml-3" onClick={() => removeItem(i)}>
+          <button
+            className="text-red-600 font-bold ml-3"
+            onClick={() => removeItem(i)}
+          >
             Eliminar
           </button>
         </div>
@@ -75,7 +121,10 @@ export default function CarritoPage() {
           <span>${total.toFixed(2)}</span>
         </div>
 
-        <button className="w-full bg-black text-white py-3 rounded-xl mt-4 font-semibold">
+        <button
+          className="w-full bg-black text-white py-3 rounded-xl mt-4 font-semibold"
+          onClick={handleProcederPago}
+        >
           Proceder al Pago
         </button>
       </div>
