@@ -1,0 +1,1089 @@
+/* Reutilizamos los estilos del inventario y agregamos los específicos para promociones */
+
+.adminPage {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f9fafb;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.adminMain {
+  margin-left: 280px;
+  flex: 1;
+  width: calc(100% - 280px);
+}
+
+/* Dashboard */
+.dashboard {
+  padding: 32px;
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+.dashboardHeader {
+  margin-bottom: 24px;
+}
+
+.dashboardTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.dashboardSubtitle {
+  font-size: 16px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.promotionsActions {
+  margin-bottom: 24px;
+}
+
+/* Table */
+.tableSection {
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.productTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.productTable th,
+.productTable td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.productTable th {
+  background-color: #f9fafb;
+  font-weight: 600;
+  color: #374151;
+  font-size: 14px;
+}
+
+.productTable td {
+  font-size: 14px;
+  color: #1f2937;
+}
+
+/* Button */
+.button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.buttonPrimary {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.buttonPrimary:hover {
+  background-color: #2563eb;
+}
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal {
+  background: white;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modalHeader h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.closeButton:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.modalBody {
+  padding: 24px;
+}
+
+.modalFooter {
+  padding: 20px 24px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* Form Styles */
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.formGroup {
+  margin-bottom: 16px;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.formGroup input,
+.formGroup textarea,
+.formGroup select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus,
+.formGroup select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.formSection {
+  margin-bottom: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.formSection h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Radio Group */
+.radioGroup {
+  display: flex;
+  gap: 20px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #374151;
+}
+
+.radioLabel input[type="radio"] {
+  display: none;
+}
+
+.radioCustom {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #d1d5db;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.radioCustom::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+  transition: all 0.2s;
+}
+
+.radioLabel input[type="radio"]:checked + .radioCustom {
+  border-color: #3b82f6;
+  background: #3b82f6;
+}
+
+.radioLabel input[type="radio"]:checked + .radioCustom::after {
+  background: #3b82f6;
+}
+
+/* Input with Suffix */
+.inputWithSuffix {
+  position: relative;
+}
+
+.inputSuffix {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.inputWithSuffix input {
+  padding-right: 40px;
+}
+
+/* Button Styles */
+.button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 80px;
+}
+
+.buttonPrimary {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.buttonPrimary:hover {
+  background-color: #2563eb;
+}
+
+.buttonSecondary {
+  background-color: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.buttonSecondary:hover {
+  background-color: #e5e7eb;
+}
+
+/* Placeholder styling for date inputs */
+.formGroup input[type="text"]::placeholder {
+  color: #9ca3af;
+}
+
+/* Date input specific styling */
+.formGroup input[type="date"] {
+  color: #374151;
+}
+
+/* Make the date inputs show placeholder when empty */
+.formGroup input[type="date"]:invalid:not(:focus) {
+  color: transparent;
+}
+
+.formGroup input[type="date"]:invalid:not(:focus)::before {
+  content: attr(placeholder);
+  color: #9ca3af;
+}
+/* Badge clickable */
+.badge {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.badge:hover {
+  opacity: 0.8;
+}
+
+.formTableCell input[type="date"] {
+  color: #374151;
+  padding: 8px 12px;
+}
+
+/* Remove the placeholder tricks for date inputs since we're using type="date" directly */
+.formTableCell input[type="date"]:invalid {
+  color: #9ca3af;
+}
+/* Mobile Sidebar Styles */
+.mobileMenuButton {
+  display: none;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1001;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.mobileOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.adminSidebar.mobile {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  width: 280px;
+  height: 100vh;
+  background: white;
+  z-index: 1000;
+  transition: left 0.3s ease;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.adminSidebar.mobile.open {
+  left: 0;
+}
+
+.closeSidebar {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 8px;
+  border-radius: 4px;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.closeSidebar:hover {
+  background-color: #f3f4f6;
+}
+
+/* Mostrar botón móvil solo en mobile */
+@media (max-width: 1023px) {
+  .mobileMenuButton {
+    display: block;
+  }
+  
+  .adminSidebar.desktop {
+    display: none;
+  }
+}
+
+/* Ocultar sidebar mobile en desktop */
+@media (min-width: 1024px) {
+  .adminSidebar.mobile {
+    display: none;
+  }
+  
+  .mobileMenuButton {
+    display: none;
+  }
+}
+/* app/admin/promociones/promociones.css */
+
+/* Estilos base - Mobile First */
+.adminPage {
+  min-height: 100vh;
+  background-color: #f9fafb;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.adminMain {
+  width: 100%;
+  padding: 16px;
+}
+
+/* Dashboard */
+.dashboard {
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+.dashboardHeader {
+  margin-bottom: 20px;
+}
+
+.dashboardTitle {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.dashboardSubtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.promotionsActions {
+  margin-bottom: 20px;
+}
+
+/* Table Section - Mobile */
+.tableSection {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.tableTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 16px;
+}
+
+/* Table responsive */
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.productTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* Minimum width for table */
+}
+
+.productTable th,
+.productTable td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 13px;
+}
+
+.productTable th {
+  background-color: #f9fafb;
+  font-weight: 600;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.productTable td {
+  color: #1f2937;
+  white-space: nowrap;
+}
+
+.productName {
+  font-weight: 600;
+}
+
+/* Button */
+.button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 80px;
+}
+
+.buttonPrimary {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.buttonPrimary:hover {
+  background-color: #2563eb;
+}
+
+.buttonSecondary {
+  background-color: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.buttonSecondary:hover {
+  background-color: #e5e7eb;
+}
+
+/* Badge */
+.badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.badge:hover {
+  opacity: 0.8;
+}
+
+.badgeDefault {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.badgeSuccess {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+/* Modal Styles - Mobile First */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 1000;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal {
+  background: white;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+}
+
+.modalHeader h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.closeButton:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.modalBody {
+  padding: 20px;
+}
+
+.modalFooter {
+  padding: 16px 20px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  position: sticky;
+  bottom: 0;
+  background: white;
+}
+
+/* Form Table Structure - Mobile */
+.formTable {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.formTableRow {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formTableCell {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Form Styles */
+.formTableCell label,
+.formSection label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.sectionLabel {
+  font-weight: 600 !important;
+  margin-bottom: 8px !important;
+}
+
+.formTableCell input,
+.formSection input,
+.formSection textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+
+.formTableCell input:focus,
+.formSection input:focus,
+.formSection textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.formSection textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.formSection {
+  margin-bottom: 16px;
+}
+
+/* Radio Group */
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #374151;
+  font-weight: normal;
+}
+
+.radioLabel input[type="radio"] {
+  display: none;
+}
+
+.radioCustom {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #d1d5db;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.radioCustom::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+  transition: all 0.2s;
+}
+
+.radioLabel input[type="radio"]:checked + .radioCustom {
+  border-color: #3b82f6;
+  background: #3b82f6;
+}
+
+.radioLabel input[type="radio"]:checked + .radioCustom::after {
+  background: #3b82f6;
+}
+
+/* Discount Input */
+.discountInput {
+  position: relative;
+  width: 100%;
+  max-width: 200px;
+}
+
+.discountSuffix {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.discountInput input {
+  padding-right: 40px;
+}
+
+/* Date inputs */
+.formTableCell input[type="date"] {
+  color: #374151;
+  padding: 10px 12px;
+}
+
+.formTableCell input[type="date"]:invalid {
+  color: #9ca3af;
+}
+
+/* ===== MEDIA QUERIES - TABLET ===== */
+@media (min-width: 768px) {
+  .adminMain {
+    padding: 24px;
+  }
+
+  .dashboardHeader {
+    margin-bottom: 24px;
+  }
+
+  .dashboardTitle {
+    font-size: 24px;
+  }
+
+  .dashboardSubtitle {
+    font-size: 16px;
+  }
+
+  .tableSection {
+    padding: 20px;
+  }
+
+  .tableTitle {
+    font-size: 18px;
+  }
+
+  .productTable th,
+  .productTable td {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  .formTableRow {
+    flex-direction: row;
+  }
+
+  .modal {
+    max-width: 90%;
+  }
+
+  .radioGroup {
+    flex-direction: row;
+    gap: 20px;
+  }
+}
+
+/* ===== MEDIA QUERIES - DESKTOP ===== */
+@media (min-width: 1024px) {
+  .adminPage {
+    display: flex;
+  }
+
+  .adminMain {
+    margin-left: 280px;
+    width: calc(100% - 280px);
+    padding: 32px;
+  }
+
+  .dashboard {
+    padding: 0;
+  }
+
+  .tableSection {
+    padding: 24px;
+  }
+
+  .modal {
+    max-width: 500px;
+  }
+
+  .productTable {
+    min-width: auto;
+  }
+
+  /* Sidebar para desktop */
+  .adminSidebar {
+    width: 280px;
+    background: white;
+    border-right: 1px solid #e5e7eb;
+    height: 100vh;
+    padding: 24px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+  }
+
+  .sidebarHeader {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .sidebarTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 8px;
+  }
+
+  .sidebarSubtitle {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0;
+  }
+
+  .navList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .navItem {
+    margin-bottom: 8px;
+  }
+
+  .checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-weight: 500;
+    color: #374151;
+    user-select: none;
+  }
+
+  .checkboxLabel:hover {
+    background-color: #f9fafb;
+  }
+
+  .checkbox {
+    display: none;
+  }
+
+  .checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #d1d5db;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .checkbox:checked + .checkmark {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+  }
+
+  .checkbox:checked + .checkmark::after {
+    content: '✓';
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+  }
+}
+
+/* ===== MEDIA QUERIES - LARGE DESKTOP ===== */
+@media (min-width: 1280px) {
+  .adminMain {
+    padding: 40px;
+  }
+
+  .dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+/* ===== MOBILE SPECIFIC ADJUSTMENTS ===== */
+@media (max-width: 767px) {
+  /* Ajustes específicos para móvil */
+  .productTable {
+    font-size: 12px;
+  }
+
+  .buttonSecondary {
+    padding: 4px 8px;
+    font-size: 11px;
+    margin-bottom: 4px;
+    display: block;
+    width: 100%;
+  }
+
+  .modalOverlay {
+    padding: 10px;
+    align-items: flex-start;
+  }
+
+  .modal {
+    max-height: 95vh;
+  }
+
+  .modalBody {
+    padding: 16px;
+  }
+
+  /* Mejorar la legibilidad en móvil */
+  .productTable th,
+  .productTable td {
+    padding: 8px 10px;
+  }
+
+  /* Asegurar que los botones sean tocables */
+  .button {
+    min-height: 44px;
+  }
+
+  .closeButton {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* ===== ORIENTACIÓN LANDSCAPE EN MÓVIL ===== */
+@media (max-width: 767px) and (orientation: landscape) {
+  .modalOverlay {
+    align-items: flex-start;
+  }
+
+  .modal {
+    max-height: 85vh;
+  }
+}
+.status-button {
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.status-button.active {
+  background-color: #10b981;
+  color: white;
+}
+
+.status-button.inactive {
+  background-color: #ef4444;
+  color: white;
+}
+
+.buttonDanger {
+  background-color: #ef4444;
+  color: white;
+}
+
+.buttonDanger:hover {
+  background-color: #dc2626;
+}
