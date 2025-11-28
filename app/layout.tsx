@@ -1,6 +1,7 @@
-// app/layout.tsx
 import "./globals.css";
 import BottomNav from "./components/BottomNav";
+import { UserProvider } from "./context/UserContext";
+import { CartProvider } from "./context/CartContext";
 
 export const metadata = {
   title: "Tienda Portu",
@@ -11,10 +12,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es">
       <body className="bg-white text-black">
-        <div className="min-h-screen w-full bg-white">
-          {children}
-          <BottomNav />
-        </div>
+        <UserProvider>
+          <CartProvider>
+            <div className="min-h-screen">
+              {children}
+              <BottomNav />
+            </div>
+          </CartProvider>
+        </UserProvider>
       </body>
     </html>
   );

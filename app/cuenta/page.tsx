@@ -1,8 +1,19 @@
+'use client';
+
+import { useState } from 'react';
+import CardCuenta from '../cuenta/CardCuenta';
+import CardEditar from '../cuenta/CardEditar';
+
 export default function CuentaPage() {
+  const [isEditing, setIsEditing] = useState(false);
+
   return (
-    <div className="p-4 text-black">
-      <h1 className="text-2xl font-bold">Cuenta</h1>
-      <p className="mt-2">Información de tu cuenta NO ALTERAR EL FORMATO.</p>
+      <div className="mt-4">
+        {isEditing ? (
+          <CardEditar onClose={() => setIsEditing(false)} />
+        ) : (
+          <CardCuenta onEdit={() => setIsEditing(true)} />
+        )}
     </div>
   );
 }
